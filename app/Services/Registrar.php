@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\AssignedRoles;
 use App\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
@@ -30,7 +31,7 @@ class Registrar implements RegistrarContract {
      * @return User
      */
     public function create(array $data) {
-        return User::create([
+        $user = User::create([
                     'name' => $data['name'],
                     'username' => md5(microtime() . env('APP_KEY')),
                     'email' => $data['email'],
@@ -42,6 +43,11 @@ class Registrar implements RegistrarContract {
                     'confirmed' => 1,
                     'confirmation_code' => md5(microtime() . env('APP_KEY')),
         ]);
+        $assignedrole = new AssignedRoles;
+        $assignedrole->user_id = $user->id;
+        $assignedrole->role_id = 2;
+        $assignedrole->save();
+        return $user;
     }
 
 }

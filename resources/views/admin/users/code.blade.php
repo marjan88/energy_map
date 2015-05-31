@@ -13,18 +13,18 @@
 </div>
 <div class="row">
     <form name="codeForm" class="form-horizontal" style="margin-top: 20px" method="post"
-          action="{{ URL::to('admin/code/') }}"
+          action="{{ URL::to('admin/code/new') }}"
           autocomplete="off">
 
         <!-- _token -->
         <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-        @if($key)
+        @if(isset($key))
         <!-- old code  -->
         <div class="col-md-8">
             <div class="form-group ">
                 <label class="col-md-2 control-label" for="code">Register Code</label>
                 <div class="col-md-10">
-                    <input style="font-size: 24px"  class="form-control" tabindex="1" value="{{$key->key}}" type="text" >                   
+                    <input style="font-size: 24px"  class="form-control" tabindex="1" value="@if(isset($key)) {{$key->key }}@endif" type="text" >                   
                 </div>
             </div>
             <hr/>
@@ -92,7 +92,7 @@
                     <div class="form-group">
                         <label for="subject" class="col-sm-2 control-label">Registration Code</label>
                         <div class="col-sm-10">
-                            <input readonly="" type="text" class="form-control" name="code" id="subject" value="{{$key->key}}">
+                            <input readonly="" type="text" class="form-control" name="code" id="subject" value="@if(isset($key)) {{$key->key }}@endif">
                         </div>
                     </div>                    
 

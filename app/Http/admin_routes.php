@@ -30,7 +30,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     
     Route::post('plant/delete', 'Admin\UserController@destroy');
     Route::get('code', 'Admin\UserController@getCode');
-    Route::post('code', 'Admin\UserController@postCode');
+    Route::post('code/new', 'Admin\UserController@postCode');
     Route::post('send-mail', 'Admin\UserController@postMail');
     Route::get('users/data', 'Admin\UserController@data');
 

@@ -83,9 +83,12 @@ use AuthenticatesAndRegistersUsers;
         foreach($keys as $key => $value) {            
            $res .= $value;
         }
-        $dbKey = Key::find(1);
+        
+        $dbKey = Key::first();
+       
         if($dbKey->key !== $res) {
-            return back()->with('error', Lang::get('site/user.key'));
+           
+            return redirect('auth/register')->with('error', Lang::get('site/user.key'))->withInput();
         }
         
         $this->auth->login($this->registrar->create($request->all()));

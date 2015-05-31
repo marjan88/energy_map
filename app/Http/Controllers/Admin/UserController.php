@@ -185,8 +185,15 @@ class UserController extends AdminController {
     }
 
     public function getCode() {
-        $key = Key::first();
-        return view('admin.users.code', compact('key'));
+       
+        $key = Key::all();
+        
+        if(count($key)>0) {
+             $key = Key::first();
+            return view('admin.users.code', compact('key'));
+        }
+        
+        return view('admin.users.code');
     }
 
     public function postCode(KeyRequest $request) {
