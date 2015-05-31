@@ -154,6 +154,7 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
+                'Barryvdh\DomPDF\ServiceProvider',
 
 	],
 
@@ -212,6 +213,7 @@ return [
 		'Datatables'  => 'yajra\Datatables\Datatables',
 		'Flash' => 'laracasts/Flash/Flash',
 		'Debugbar' => 'Barryvdh\Debugbar\Facade',
+                'PDF' => 'Barryvdh\DomPDF\Facade',
 
 	],
 

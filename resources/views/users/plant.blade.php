@@ -95,6 +95,7 @@
         </table>
         <div class="pull-right">
                     <div class="pull-right">
+                        <a class="btn btn-sm btn-success" href="{{ url('user/pdf/' . $plant->id ) }}"><span class="glyphicon glyphicon-download"></span> Download PDF</a>
                         <a class="btn btn-sm btn-danger delete" href="{{ url('user/delete/' . $plant->id ) }}"><span class="glyphicon glyphicon-trash"></span> Delete</a>
                     </div>
                 </div>

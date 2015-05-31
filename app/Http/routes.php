@@ -18,9 +18,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
     Route::get('home/data', 'Users\UserController@getData');
     Route::get('profile', 'Users\UserController@getEdit');
     Route::post('profile/{id}/edit', 'Users\UserController@postEdit');
-    Route::get('anlagenregister', 'Users\AnlagenregisterController@index');
-    Route::get('anlagenregister/{id}/show', 'Users\UserController@show');
-    Route::get('delete/{id}', 'Users\UserController@deletePlant');
+    
 
     #plant
 //    Route::post('search/autocomplete', 'Users\UserController@autocomplete');
@@ -30,6 +28,10 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
     Route::post('anlagenregister/create', 'Users\AnlagenregisterController@postCreate');
     Route::get('anlagenregister/confirm', 'Users\AnlagenregisterController@getCreate');
     Route::post('anlagenregister/store', 'Users\AnlagenregisterController@store');
+    Route::get('anlagenregister', 'Users\AnlagenregisterController@index');
+    Route::get('anlagenregister/{id}/show', 'Users\UserController@show');
+    Route::get('delete/{id}', 'Users\UserController@deletePlant');
+    Route::get('pdf/{id}', 'Users\DocumentController@createPdf');
 
 
     Route::get('about', 'PagesController@about');
