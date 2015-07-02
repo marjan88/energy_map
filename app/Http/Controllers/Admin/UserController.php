@@ -117,6 +117,7 @@ class UserController extends AdminController {
     public function postEdit(UserEditRequest $request, $id) {
 
         $user = User::find($id);
+       
         $user->name = $request->name;
         $user->last_name = $request->last_name;
         $user->phone = $request->phone;
@@ -126,7 +127,7 @@ class UserController extends AdminController {
         $user->confirmed = $request->confirmed;
 
         $password = $request->password;
-        $passwordConfirmation = $request->password_confirmation;
+        $passwordConfirmation = $request->password;
 
         if (!empty($password)) {
             if ($password === $passwordConfirmation) {

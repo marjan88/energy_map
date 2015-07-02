@@ -11,9 +11,9 @@
   |
  */
 
-Route::get('/', 'Auth\AuthController@getLogin');
+Route::get('/', ['middleware'=>'user', 'uses' => 'Auth\AuthController@getLogin']);
 
-Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
+Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isAdmin']], function() {
     Route::get('home', 'Users\UserController@index');
     Route::get('home/data', 'Users\UserController@getData');
     Route::get('profile', 'Users\UserController@getEdit');

@@ -18,7 +18,7 @@
                                 </li>-->
 
                 <li class="{{ (Request::is('contact') ? 'active' : '') }}">
-                    <a href="{!! URL::to('contact') !!}"><i class="fa fa-phone"></i> Contact</a>
+                    <a href="#"><i class="fa fa-phone"></i> Contact</a>
                 </li>
             </ul>
 

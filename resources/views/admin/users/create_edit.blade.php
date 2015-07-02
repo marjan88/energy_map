@@ -58,21 +58,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- EMAIL  -->
-                <div class="col-md-12">
-                    <div class="form-group {{{ $errors->has('email') ? 'has-error' : '' }}}">
-                        <label class="col-md-2 control-label" for="email">{{
-						Lang::get('admin/users.email') }}</label>
-                        <div class="col-md-10">
-                            <input class="form-control" type="email" tabindex="4"
-                                   placeholder="{{ Lang::get('admin/users.email') }}" name="email"
-                                   id="email"
-                                   value="{{{ Input::old('email', isset($user) ? $user->email : null) }}}" />
-                            {!! $errors->first('email', '<label class="control-label"
-                                                                for="email">:message</label>')!!}
-                        </div>
-                    </div>
-                </div>
+               
 
                 <!-- STREET -->
                 <div class="col-md-12">
