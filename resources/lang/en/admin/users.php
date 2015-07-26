@@ -10,6 +10,7 @@ return [
     'username' =>   'Username',
     'email' =>   'Email',
     'password' =>  'Password',
+    'last_login' => 'Last Login',
     'password_confirmation' => 'Password confirmation',
     'activate_user' => 'Activate user',
     'active_user' => 'Active user',

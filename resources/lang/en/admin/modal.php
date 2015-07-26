@@ -12,6 +12,7 @@ return [
     'new' => 'Neue Kunden',
     'delete' => 'Delete',
     'items' => 'Items',
+    'show' => 'Show',
     'delete_message' => 'Did you want to delete this item?',
     'delete' => 'Delete',
     'mail' => array(

@@ -1,67 +1,43 @@
-@extends('app')
+@extends('appLogin')
 
 {{-- Web site Title --}}
 @section('title') {{{ Lang::get('site/user.login') }}} :: @parent @stop
 
 {{-- Content --}}
 @section('content')
-    <div class="row">
-        <div class="page-header">
-            <h2>{{{ Lang::get('site/user.login_to_account') }}}</h2>
+
+<div class="row vertical-offset-100">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="panel panel-default">
+            <div align="center" class="panel-heading">
+                <h3 class="panel-title">Sign in</h3>
+            </div>
+            <div class="panel-body">
+                <form method="post" action="{!! URL::to('/auth/login') !!}" accept-charset="UTF-8" role="form">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <fieldset>
+                        <div class="form-group {{{ $errors->has('email') ? 'has-error' : '' }}}">
+                            <input class="form-control" placeholder="E-mail" name="email" type="text" value="{{ old('email') }}">
+                            {!! $errors->first('email', '<span class="help-block error">:message</span>')!!}
+                        </div>
+                        <div class="form-group {{{ $errors->has('password') ? 'has-error' : '' }}}">
+                            <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                            {!! $errors->first('password', '<span class="help-block error">:message</span>')!!}
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input name="remember" type="checkbox" value="Remember Me"> Remember Me
+                            </label>
+                        </div>
+                        <input class="btn  btn-info btn-block" type="submit" value="Login">
+                        <a href="{{url('auth/register')}}" class="btn btn-primary  btn-block">
+                            <i class="fa fa-sign-in"></i>  Register
+                        </a>
+                    </fieldset>
+                </form>
+            </div>
         </div>
     </div>
+</div>
 
-    <div class="container-fluid">
-        <div class="row">
-            {{--<div class="col-md-8 col-md-offset-2">--}}
-                {{--<div class="panel panel-default">--}}
-                    {{--<div class="panel-heading">Login</div>--}}
-                    {{--<div class="panel-body">--}}
-
-                        @include('errors.list')
-
-                        <form class="form-horizontal" role="form" method="POST" action="{!! URL::to('/auth/login') !!}">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">E-Mail Address</label>
-
-                                <div class="col-md-6">
-                                    <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">Password</label>
-
-                                <div class="col-md-6">
-                                    <input type="password" class="form-control" name="password">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="remember"> Remember Me
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary" style="margin-right: 15px;">
-                                        Login
-                                    </button>
-
-                                    <a href="{!! URL::to('/password/email') !!}">Forgot Your Password?</a>
-                                </div>
-                            </div>
-                        </form>
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        </div>
-    </div>
 @endsection

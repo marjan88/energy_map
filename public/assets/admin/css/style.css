@@ -68,20 +68,6 @@ glyphicon-refresh-animate {
     display: none;
 }
 
-.key {
-    width: 50px; float: left; margin-right: 10px
-}
-
-.btn-circle {
-    margin-top: 5px;
-  width: 30px ;
-  height: 30px;
-  text-align: center;
-  padding: 6px 0;
-  font-size: 12px;
-  line-height: 1.428571429;
-  border-radius: 15px;
-}
 
 .errorMail{
     display: none;

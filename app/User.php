@@ -55,6 +55,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	{
 		$this->roles()->detach($role);
 	}
+        
+        public static function findByEmail($email) {
+            return User::where('email', $email)->first();
+        }
 
 
 	public function articles()

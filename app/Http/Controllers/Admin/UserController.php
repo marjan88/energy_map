@@ -230,17 +230,18 @@ class UserController extends AdminController {
      * @return Datatables JSON
      */
     public function data() {
-        $users = User::select(array('users.id', 'users.name', 'users.last_name', 'users.city', 'users.email', 'users.confirmed'))->orderBy('users.email', 'ASC');
+        $users = User::select(array('users.id', 'users.name', 'users.last_name', 'users.city', 'users.email', 'users.confirmed', 'users.last_login'))->orderBy('users.email', 'ASC');
         //$users = User::select(array('users.id','users.name','users.email', 'users.created_at'))->orderBy('users.email', 'ASC');
 
         return Datatables::of($users)
                         ->edit_column('confirmed', '@if ($confirmed=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif')
-                        ->add_column('actions', '@if($id == "1")<a href="{{{ URL::to(\'admin/users/\' . $id . \'/edit\' ) }}}" class="btn btn-success btn-sm" ><span class="glyphicon glyphicon-pencil"></span>  {{ Lang::get("admin/modal.edit") }}</a>
+                        ->add_column('actions', '@if($id == "1")<a href="{{{ URL::to(\'admin/users/\' . $id . \'/edit\' ) }}}" class="btn btn-success btn-sm" ><span class="glyphicon glyphicon-eye-open"></span>  {{ Lang::get("admin/modal.show") }}</a>
                             @else
-                            <a href="{{{ URL::to(\'admin/users/\' . $id . \'/edit\' ) }}}" class="btn btn-success btn-sm" ><span class="glyphicon glyphicon-pencil"></span>  {{ Lang::get("admin/modal.edit") }}</a>
+                            <a href="{{{ URL::to(\'admin/users/\' . $id . \'/edit\' ) }}}" class="btn btn-success btn-sm" ><span class="glyphicon glyphicon-eye-open"></span>  {{ Lang::get("admin/modal.show") }}</a>
                             <a href="{{{ URL::to(\'admin/users/\' . $id . \'/delete\' ) }}}" onclick="return confirm(\'Are you sure you want to delete this user?\');" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> {{ Lang::get("admin/modal.delete") }}</a>
                             @endif
                 ')
+                ->edit_column('last_login' , '{{date_format(date_create($last_login), "d-m-Y H:i:s")}}')
                         ->remove_column('id')
                         ->make();
     }

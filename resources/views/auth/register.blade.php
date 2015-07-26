@@ -1,129 +1,128 @@
-@extends('app')
+@extends('appLogin')
 
 {{-- Web site Title --}}
 @section('title') {{{ Lang::get('site/user.register') }}} :: @parent @stop
 
 {{-- Content --}}
 @section('content')
-@include('partials.notifications')
-<div class="row">
-    <div class="page-header">
-        <h2>{{{ Lang::get('site/user.register') }}}</h2>
-    </div>
-</div>
 
-<div class="container-fluid">
-    <div class="row">
-        {{--<div class="col-md-8 col-md-offset-2">--}}
-        {{--<div class="panel panel-default">--}}
-        {{--<div class="panel-heading">Register</div>--}}
-        {{--<div class="panel-body">--}}
-
-        @include('errors.list')
-
-        <form class="form-horizontal" role="form" method="POST" action="{!! URL::to('/auth/register') !!}">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-            <!-- FIST NAME -->
-            <div class="form-group">
-                <label class="col-md-4 control-label">{{{ Lang::get('site/user.first_name')}}}</label>
-
-                <div class="col-md-6">
-                    <input type="text" class="form-control" name="name" value="{{ old('name') }}">
-                </div>
-
-            </div>                           
-
-            <!-- LAST NAME -->
-            <div class="form-group">
-                <label class="col-md-4 control-label">{{{ Lang::get('site/user.last_name')}}}</label>
-
-                <div class="col-md-6">
-                    <input type="text" class="form-control" name="last_name"
-                           value="{{ old('last_name') }}">
-                </div>
+<div class="row vertical-offset-100">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
+            <div align="center" class="panel-heading">
+                <h3 class="panel-title">Register</h3>
             </div>
-            <!-- STREET -->
-            <div class="form-group">
-                <label class="col-md-4 control-label">{{{ Lang::get('site/user.street')}}}</label>
+            <div class="panel-body">
+                <form class="form-horizontal" role="form" method="POST" action="{!! URL::to('/auth/register') !!}">
+                
+                <div class="modal-body">
 
-                <div class="col-md-6">
-                    <input type="text" class="form-control" name="street"
-                           value="{{ old('street') }}">
-                </div>
-            </div>
-            <!-- CITY -->
-            <div class="form-group">
-                <label class="col-md-4 control-label">{{{ Lang::get('site/user.city')}}}</label>
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                <div class="col-md-6">
-                    <input type="text" class="form-control" name="city"
-                           value="{{ old('city') }}">
-                </div>
-            </div>
+                    <!-- FIST NAME -->
+                    <div class="form-group {{{ $errors->has('name') ? 'has-error' : '' }}}">
+                        <label class="col-md-4 control-label">{{{ Lang::get('site/user.first_name')}}}</label>
 
-            <!-- PHONE  -->
-            <div class="form-group">
-                <label class="col-md-4 control-label">{{{ Lang::get('site/user.phone')}}}</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                            {!! $errors->first('name', '<span class="help-block error">:message</span>')!!}
+                        </div>
+                        
 
-                <div class="col-md-6">
-                    <input type="text" class="form-control" name="phone"
-                           value="{{ old('phone') }}">
-                </div>
-            </div>
-            <!-- EMAIL  -->
-            <div class="form-group">
-                <label class="col-md-4 control-label">{{{ Lang::get('site/user.e_mail') }}}</label>
+                    </div>                           
 
-                <div class="col-md-6">
-                    <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-                </div>
-            </div>
-            <!-- PASSWORD  -->
-            <div class="form-group">
-                <label class="col-md-4 control-label">Password</label>
+                    <!-- LAST NAME -->
+                    <div class="form-group {{{ $errors->has('last_name') ? 'has-error' : '' }}}">
+                        <label class="col-md-4 control-label">{{{ Lang::get('site/user.last_name')}}}</label>
 
-                <div class="col-md-6">
-                    <input type="password" class="form-control" name="password">
-                </div>
-            </div>
-            <!-- CONFIRM PASSWORD  -->
-            <div class="form-group">
-                <label class="col-md-4 control-label">Confirm Password</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="last_name"
+                                   value="{{ old('last_name') }}">
+                            {!! $errors->first('last_name', '<span class="help-block error">:message</span>')!!}
+                        </div>
+                    </div>
+                    <!-- STREET -->
+                    <div class="form-group {{{ $errors->has('street') ? 'has-error' : '' }}}">
+                        <label class="col-md-4 control-label">{{{ Lang::get('site/user.street')}}}</label>
 
-                <div class="col-md-6">
-                    <input type="password" class="form-control" name="password_confirmation">
-                </div>
-            </div>
-            <!-- CODE  -->
-            <div class="form-group ">
-                <label class="col-md-4 control-label">{{ Lang::get("site/user.registration_key") }}</label>
-                <div class="col-md-6">
-                    @for($i=0; $i<5; $i++)
-                    <input size="1" maxlength="1" type="text" class="form-control key" name="code[{{$i}}]">
-                    @endfor
-                    <button type="button" class="btn btn-info btn-circle" data-toggle="tooltip" data-placement="bottom" title='{{Lang::get("site/site.tooltip")}}'><i>info</i></button>
-                </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="street"
+                                   value="{{ old('street') }}">
+                            {!! $errors->first('street', '<span class="help-block error">:message</span>')!!}
+                        </div>
+                    </div>
+                    <!-- CITY -->
+                    <div class="form-group {{{ $errors->has('city') ? 'has-error' : '' }}}">
+                        <label class="col-md-4 control-label">{{{ Lang::get('site/user.city')}}}</label>
 
-            </div>
-            <div class="form-group">
-                <div class="col-md-6 col-md-offset-4">
-                    <button type="submit" class="btn btn-primary">
-                        Register
-                    </button>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="city"
+                                   value="{{ old('city') }}">
+                            {!! $errors->first('city', '<span class="help-block error">:message</span>')!!}
+                        </div>
+                    </div>
+
+                    <!-- PHONE  -->
+                    <div class="form-group {{{ $errors->has('phone') ? 'has-error' : '' }}}">
+                        <label class="col-md-4 control-label">{{{ Lang::get('site/user.phone')}}}</label>
+
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="phone"
+                                   value="{{ old('phone') }}">
+                            {!! $errors->first('phone', '<span class="help-block error">:message</span>')!!}
+                        </div>
+                    </div>
+                    <!-- EMAIL  -->
+                    <div class="form-group {{{ $errors->has('email') ? 'has-error' : '' }}}">
+                        <label class="col-md-4 control-label">{{{ Lang::get('site/user.e_mail') }}}</label>
+
+                        <div class="col-md-6">
+                            <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                            {!! $errors->first('email', '<span class="help-block error">:message</span>')!!}
+                        </div>
+                    </div>
+                    <!-- PASSWORD  -->
+                    <div class="form-group {{{ $errors->has('password') ? 'has-error' : '' }}}">
+                        <label class="col-md-4 control-label">Password</label>
+
+                        <div class="col-md-6">
+                            <input type="password" class="form-control" name="password">
+                            {!! $errors->first('password', '<span class="help-block error">:message</span>')!!}
+                        </div>
+                    </div>
+                    <!-- CONFIRM PASSWORD  -->
+                    <div class="form-group {{{ $errors->has('password_confirmation') ? 'has-error' : '' }}}">
+                        <label class="col-md-4 control-label">Confirm Password</label>
+
+                        <div class="col-md-6">
+                            <input type="password" class="form-control" name="password_confirmation">
+                            {!! $errors->first('password_confirmation', '<span class="help-block error">:message</span>')!!}
+                        </div>
+                    </div>
+                    <!-- CODE  -->
+                    <div class="form-group  {{{ $errors->has('code') ? 'has-error' : '' }}}">
+                        <label class="col-md-4 control-label">{{ Lang::get("site/user.registration_key") }}</label>
+                        <div class="col-md-6 code">
+                            @for($i=0; $i<5; $i++)
+                            <input  size="1" maxlength="1" type="text" class="form-control key" name="code[{{$i}}]">
+                            {!! $errors->first('code.'.$i, '<br/><span class="help-block error">:message</span>')!!}
+                            @endfor
+                            <button type="button" class="btn btn-info btn-circle" data-toggle="tooltip" data-placement="bottom" title='{{Lang::get("site/site.tooltip")}}'><i>info</i></button>
+                            
+                        </div>
+
+                    </div>
+
+
                 </div>
+                <div class="modal-footer">
+                    <a href="{{url('/')}}" class="btn btn-default" data-dismiss="modal">Back</a>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Register</button>
+
+                </div>
+            </form>
             </div>
-        </form>
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</div>--}}
+        </div>
     </div>
 </div>
 @endsection
-@section('scripts')
-<script>
-    jQuery('.key').bind({keyup: function () {
-            $(this).next().focus()
-        }});
-</script>
-@stop
