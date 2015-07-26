@@ -80,7 +80,7 @@
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 control-label">To</label>
                         <div class="col-sm-10">
-                            <input data-validation="email" type="email" class="form-control" id="emailInput" name="email" placeholder="email">                            
+                            <input required="" type="email" class="form-control" id="emailInput" name="email" placeholder="email">                            
                         </div>
                     </div>
                     <div class="form-group">
@@ -124,9 +124,10 @@
                     document.codeForm.code.value = randomstring;
                 }
                 $('#mailModal').on('shown.bs.modal', function () {
+                    $('.form-error').remove();
                     $('#emailInput').focus();
                 })
-                $.validate();
+//                $.validate();
 
 </script>
 @stop

@@ -54,7 +54,7 @@ Dashboard</span>
         </a>
     </li>
     
-    <li {{ (Request::is('admin/profil*') ? ' class=active' : '') }} >
+    <li {{ (Request::is('admin/code*') ? ' class=active' : '') }} >
         <a href="{{URL::to('admin/code')}}"
                 >
             <i class="fa fa-barcode"></i><span
