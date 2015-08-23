@@ -223,6 +223,12 @@ class UserController extends AdminController {
 
         return back()->with('success', Lang::get('admin/modal.mail.success'));
     }
+    
+    
+    public function getContact() {
+        return 'not finished';
+    }
+    
 
     /**
      * Show a list of all the languages posts formatted for Datatables.

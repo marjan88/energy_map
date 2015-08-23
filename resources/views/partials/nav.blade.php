@@ -17,9 +17,38 @@
                                     <a href="{!! URL::to('') !!}"><i class="fa fa-home"></i> Home</a>
                                 </li>-->
 
-                <li class="{{ (Request::is('contact') ? 'active' : '') }}">
+                
+                @if(Auth::check())
+                @if(Auth::user()->hasRole('admin'))
+                <li {{ (Request::is('admin/users*') ? ' class=active' : '') }} >
+                    <a href="{{route('users')}}">
+                        <i class="fa fa-users"></i><span
+                            class="hidden-sm text"> Meine Kunden</span>
+                    </a>
+                </li>
+                <li {{ (Request::is('admin/anlagenregister*') ? ' class=active' : '') }} >
+                    <a href="{{route('anlagenregister')}}">
+                        <i class="fa fa-bolt"></i><span
+                            class="hidden-sm text"> Anlagenregister</span>
+                    </a>
+                </li>
+               
+               <li {{ (Request::is('admin/contact*') ? ' class=active' : '') }} >
+                    <a href="{{route('contact')}}"><i class="fa fa-phone"></i> {{ \Lang::get('admin/contact.contact-form')}}</a>
+                </li>
+                
+                 <li {{ (Request::is('admin/settings*') ? ' class=active' : '') }} >
+                    <a href="{{route('settings')}}">
+                       <i class="fa fa-cogs"></i> Settings  
+                    </a>
+                </li>
+                
+                @else
+                 <li class="{{ (Request::is('contact') ? 'active' : '') }}">
                     <a href="#"><i class="fa fa-phone"></i> Contact</a>
                 </li>
+                @endif
+                @endif
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -37,11 +66,9 @@
                     <ul class="dropdown-menu" role="menu">
                         @if(Auth::check())
                         @if(Auth::user()->hasRole('admin'))
-                        <!--                                    <li>
-                                                                <a href="{!! URL::to('admin/dashboard') !!}"><i class="fa fa-tachometer"></i> Dashboard</a>
-                                                            </li>-->
+
                         @endif
-                        <li role="presentation" class="divider"></li>
+                        <!--<li role="presentation" class="divider"></li>-->
                         @endif
                         <li>
                             <a href="{!! URL::to('auth/logout') !!}"><i class="fa fa-sign-out"></i> Logout</a>

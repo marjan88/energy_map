@@ -38,7 +38,8 @@ class Handler extends ExceptionHandler {
 	{
 		if ($this->isHttpException($e))
 		{
-			return $this->renderHttpException($e);
+                    return response()->view('errors.'.'404');
+//			return $this->renderHttpException($e);
 		}
 		else
 		{

@@ -9,11 +9,8 @@
 
 <div class="page-header">
     <h3>
-        Anlagenregister
-        <div class="pull-right">
-            <div class="pull-right"> 
-            </div>
-        </div>
+        <i class="fa fa-bolt"></i> Anlagenregister
+        
     </h3>
 </div>
 <div class="row">

@@ -3,12 +3,15 @@
 @include('notifications')
 <div class="page-header">
     <h3>
-        <i class="fa fa-cogs"></i> Settings     
+        <i class="fa fa-cogs"></i> {{Lang::get("admin/settings.settings") }}       
     </h3>
 </div>
 <div class="row">
+    <h4>
+        <i class="fa fa-cog"></i> {{Lang::get("admin/settings.code") }}  
+    </h4>
     <form name="codeForm" class="form-horizontal" style="margin-top: 20px" method="post"
-          action="{{ URL::to('admin/code/new') }}"
+          action="{{ route('post.settings') }}"
           autocomplete="off">
 
         <!-- _token -->
@@ -59,6 +62,14 @@
     </div>
 </div>
 </form>
+    
+    <hr>
+    <h4>
+        <i class="fa fa-image"></i> {{Lang::get("admin/settings.image") }}  
+    </h4>
+    
+    
+    
 <!-- SEND MAIL MODAL -->   
 <div class="modal fade" id="mailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
