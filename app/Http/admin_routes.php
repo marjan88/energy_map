@@ -9,9 +9,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin
 
 
     #News
-
 //    Route::get('news/data', 'ArticlesController@data');
-
     #Plant
     Route::get('anlagenregister', ['as' => 'anlagenregister', 'uses' => 'AnlagenregisterController@index']);
     Route::post('search/autocomplete', 'UserController@autocomplete');
@@ -24,7 +22,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin
 
     #Users
     Route::get('users/', ['as' => 'users', 'uses' => 'UserController@index']);
-    Route::get('users/create', 'UserController@getCreate');
+    Route::get('users/create', ['as' => 'user.create', 'uses' => 'UserController@getCreate']);
     Route::post('users/create', 'UserController@postCreate');
     Route::get('users/{id}/edit', 'UserController@getEdit');
     Route::post('users/{id}/edit', 'UserController@postEdit');
@@ -34,11 +32,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin
 
     #Contact
     Route::get('contact', ['as' => 'contact', 'uses' => 'ContactController@index']);
+    Route::post('contact/create', ['as' => 'contact.create', 'uses' => 'ContactController@store']);
 
     #Settings
     Route::get('settings', ['as' => 'settings', 'uses' => 'SettingsController@index']);
     Route::post('settings', ['as' => 'post.settings', 'uses' => 'SettingsController@store']);
     Route::post('send-mail', 'SettingsController@postMail');
+    Route::post('image', ['as' => 'post.image', 'uses' => 'SettingsController@storeImage']);
 
     #Roles
 //    Route::get('roles/', 'Admin\RoleController@index');

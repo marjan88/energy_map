@@ -114,7 +114,7 @@ glyphicon-refresh-animate {
 }
 #preloader-1 span {
     position:absolute;
-    border: 8px solid #008cba;
+    border: 8px solid #37474f;
     border-top: 8px solid transparent;
     border-radius:999px;
 }
@@ -158,3 +158,7 @@ input.invalid, textarea.invalid{
     50% {transform: rotate(180deg); opacity: 1;}
     100% {transform: rotate(360deg); opacity: 0.5;}
 }
+
+/* CONTACT */
+
+

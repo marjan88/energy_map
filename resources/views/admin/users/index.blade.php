@@ -11,6 +11,14 @@
         <h3>
             <i class="fa fa-users"></i> 
             {{{ Lang::get("admin/users.users") }}}
+            <div class="pull-right">
+            <div class="pull-right">
+                <a class="btn btn-sm btn-default" href="{{route('user.create')}}">
+                    <span class="glyphicon glyphicon-plus-sign"></span>
+                    Neue Kunden
+                </a>
+            </div>
+        </div>
             
         </h3>
     </div>

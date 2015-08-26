@@ -32,6 +32,8 @@
         {{--rel="stylesheet">--}}
         <link rel="stylesheet" href="{{asset('assets/admin/css/style.css')}}">
         <link rel="stylesheet" href="{{asset('assets/admin/css/chosen.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/admin/css/fileinput.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/admin/css/summernote.css')}}">
 
         @yield('styles')
 

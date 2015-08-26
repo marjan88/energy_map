@@ -32,7 +32,34 @@
         {{--rel="stylesheet">--}}
         <link rel="stylesheet" href="{{asset('assets/site/css/style.css')}}">
         <link rel="stylesheet" href="{{asset('assets/admin/css/chosen.css')}}">
+        <style>
+            <?php $background =  App\Settings::getImage(get_class(new App\Settings), 'background'); ?>
+            body {
+                <?php if($background): ?>
+                /* Location of the image */
+                background-image: url(<?php echo $background; ?>);
+                <?php else: ?>
+                background-image: url(images/background2.jpg);
+                 <?php endif; ?>
+                /* Background image is centered vertically and horizontally at all times */
+                background-position: center center;
 
+                /* Background image doesn't tile */
+                background-repeat: no-repeat;
+
+                /* Background image is fixed in the viewport so that it doesn't move when 
+                   the content's height is greater than the image's height */
+                background-attachment: fixed;
+
+                /* This is what makes the background image rescale based
+                   on the container's size */
+                background-size: cover;
+
+                /* Set a background color that will be displayed
+                   while the background image is loading */
+                background-color: #464646;
+            }
+        </style>
         @yield('styles')
 
         <!-- Fonts -->
@@ -48,7 +75,7 @@
         <!--<link rel="shortcut icon" href="{{{ asset('assets/site/ico/favicon.ico') }}}">-->
     </head>
     <body>
-        
+
         @include('flash::message')
         <div class="container">
             <div id="preloader-1">
@@ -72,6 +99,6 @@ $('#flash-overlay-modal').modal();
 $('div.alert').not('.alert-danger').delay(3000).slideUp(300);
     </script>
     @yield('scripts')
-    
+
 </body>
 </html>

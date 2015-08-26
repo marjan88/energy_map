@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKeysTable extends Migration {
+class CreatePostsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,11 @@ class CreateKeysTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('keys', function(Blueprint $table)
+		Schema::create('posts', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->increments('id');                       
+                        $table->string('name');
+                        $table->text('content');
 			$table->timestamps();
 		});
 	}
@@ -26,7 +28,7 @@ class CreateKeysTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('keys');
+		Schema::drop('posts');
 	}
 
 }

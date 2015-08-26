@@ -18,7 +18,7 @@ return [
     'no' => 'No',
     'roles' => 'Roles',
     'roles_info' => 'Adding the role to user, be assigned all privileges for a given role.',
-    'create' => 'neue Kunden abrufen',
+    'create' => 'Neue Kunden Abrufen',
     'create_new' => array(
         'create' => 'Sucessfully created a new user.',
         'edit' => 'Sucessfully updated a user.',

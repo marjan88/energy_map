@@ -8,7 +8,8 @@
 </div>
 <div class="row">
     <h4>
-        <i class="fa fa-cog"></i> {{Lang::get("admin/settings.code") }}  
+        <i class="fa fa-cog"></i> {{Lang::get("admin/settings.code") }}
+        
     </h4>
     <form name="codeForm" class="form-horizontal" style="margin-top: 20px" method="post"
           action="{{ route('post.settings') }}"
@@ -62,14 +63,22 @@
     </div>
 </div>
 </form>
-    
-    <hr>
-    <h4>
-        <i class="fa fa-image"></i> {{Lang::get("admin/settings.image") }}  
-    </h4>
-    
-    
-    
+
+<hr>
+
+<!-- Background Image Upload -->
+
+<h4>
+    <i class="fa fa-image"></i> {{Lang::get("admin/settings.image") }}  
+</h4>
+<form method="POST" action="{{route('post.image')}}" enctype="multipart/form-data">
+    <!-- _token -->
+    <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+    <label class="control-label">Select Image</label>
+    <input id="input-1" name="image" type="file" class="file">
+</form>
+
+
 <!-- SEND MAIL MODAL -->   
 <div class="modal fade" id="mailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -118,21 +127,33 @@
 @section('scripts')
 @parent
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.1/jquery.form-validator.min.js"></script>
+<script src="{{asset('assets/admin/js/fileinput.js')}}"></script>
+<script type="text/javascript">
+                        $("#input-1").fileinput({
+                allowedFileTypes: ["image"],
+                        maxFileSize: 1500,
+                        @if (isset($image))
+                        initialPreview: [
+                                "<img src='{{asset($image)}}' class='file-preview-image' >",
+                        ],
+                        overwriteInitial: true,
+                        @endif
+                });</script>
 <script language="javascript" type="text/javascript">
-                function randomString() {
-                    var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+            function randomString() {
+            var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
                     var string_length = 5;
                     var randomstring = '';
                     for (var i = 0; i < string_length; i++) {
-                        var rnum = Math.floor(Math.random() * chars.length);
-                        randomstring += chars.substring(rnum, rnum + 1);
-                    }
-                    document.codeForm.code.value = randomstring;
-                }
-                $('#mailModal').on('shown.bs.modal', function () {
-                    $('.form-error').remove();
-                    $('#emailInput').focus();
-                })
+            var rnum = Math.floor(Math.random() * chars.length);
+                    randomstring += chars.substring(rnum, rnum + 1);
+            }
+            document.codeForm.code.value = randomstring;
+            }
+    $('#mailModal').on('shown.bs.modal', function () {
+    $('.form-error').remove();
+            $('#emailInput').focus();
+    })
 //                $.validate();
 
 </script>
