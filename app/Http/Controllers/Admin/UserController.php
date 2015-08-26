@@ -240,6 +240,7 @@ class UserController extends AdminController {
         //$users = User::select(array('users.id','users.name','users.email', 'users.created_at'))->orderBy('users.email', 'ASC');
 
         return Datatables::of($users)
+                        ->add_column('plants', '{{App\Plant::where("user_id", $id)->count()}}')
                         ->edit_column('confirmed', '@if ($confirmed=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif')
                         ->add_column('actions', '@if($id == "1")<a href="{{{ URL::to(\'admin/users/\' . $id . \'/edit\' ) }}}" class="btn btn-success btn-sm" >{{ Lang::get("admin/modal.show") }}</a>
                             @else

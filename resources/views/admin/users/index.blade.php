@@ -30,8 +30,9 @@
             <th>{{{ Lang::get("admin/users.last_name") }}}</th>
             <th>{{{ Lang::get("admin/users.city") }}}</th>
             <th>{{{ Lang::get("admin/users.email") }}}</th>
-            <th>{{{ Lang::get("admin/users.active_user") }}}</th>
-            <th>{{{ Lang::get("admin/users.last_login") }}}</th>       
+            <th>{{{ Lang::get("admin/users.active_user") }}}</th>            
+            <th>{{{ Lang::get("admin/users.last_login") }}}</th>
+            <th>Plants</th>
             <th>{{{ Lang::get("admin/admin.action") }}}</th>
         </tr>
         </thead>
