@@ -47,6 +47,20 @@ a {
     border-color: #46be8a;
     color: #ffffff;
 }
+
+.panel-primary {
+   
+    border-color: #259dab;
+    
+}
+
+.panel-primary > .panel-heading {
+    background-color: #259dab;
+    border-color: #259dab;
+    color: #ffffff;
+}
+
+
 .btn-primary:hover {
    background-color: #82b440;
     border-color: #82b440;

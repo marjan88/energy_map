@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 
 use App\User;
+use App\Plant;
 
 
 class DashboardController extends AdminController {
@@ -15,13 +16,10 @@ class DashboardController extends AdminController {
 	public function index()
 	{
         $title = "Dashboard";
-
-        
-        
         $users = User::count();
+        $lastUsers = User::orderBy('last_login', 'desc')->take(10)->get();
         
-      
-       
-		return view('admin.dashboard.index',  compact('title','users'));
+//        $plants = Plant::count();
+	return view('admin.dashboard.index',  compact('title','users', 'lastUsers'));
 	}
 }

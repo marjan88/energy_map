@@ -50,7 +50,7 @@ class isAdmin implements Middleware {
                             ->where('user_id', $this->auth->user()->id)->select('roles.is_admin')->get();
             foreach ($user_roles as $item) {
                 if ($item->is_admin == 1) {
-                    return $this->response->redirectTo('/admin/users');
+                    return $this->response->redirectTo('/admin/dashboard');
                 }
             }
 

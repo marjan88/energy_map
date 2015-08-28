@@ -54,7 +54,7 @@ class User implements Middleware {
                 }
             }
             if ($admin == 1) {
-                return $this->response->redirectTo('/admin/users');
+                return $this->response->redirectTo('/admin/dashboard');
             }
 
             return $this->response->redirectTo('/user/home');

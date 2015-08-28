@@ -20,6 +20,12 @@
                 
                 @if(Auth::check())
                 @if(Auth::user()->hasRole('admin'))
+                <li {{ (Request::is('admin/dashboard*') ? ' class=active' : '') }} >
+                    <a href="{{url('admin/dashboard')}}">
+                        <i class="fa fa-dashboard"></i><span
+                            class="hidden-sm text"> Dashboard</span>
+                    </a>
+                </li>
                 <li {{ (Request::is('admin/users*') ? ' class=active' : '') }} >
                     <a href="{{route('users')}}">
                         <i class="fa fa-users"></i><span
