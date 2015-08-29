@@ -17,7 +17,7 @@
                                     <a href="{!! URL::to('') !!}"><i class="fa fa-home"></i> Home</a>
                                 </li>-->
 
-                
+
                 @if(Auth::check())
                 @if(Auth::user()->hasRole('admin'))
                 <li {{ (Request::is('admin/dashboard*') ? ' class=active' : '') }} >
@@ -38,20 +38,23 @@
                             class="hidden-sm text"> Anlagenregister</span>
                     </a>
                 </li>
-               
-               <li {{ (Request::is('admin/contact*') ? ' class=active' : '') }} >
+
+                <li {{ (Request::is('admin/contact*') ? ' class=active' : '') }} >
                     <a href="{{route('contact')}}"><i class="fa fa-phone"></i> {{ \Lang::get('admin/contact.contact-form')}}</a>
                 </li>
-                
-                 <li {{ (Request::is('admin/settings*') ? ' class=active' : '') }} >
+
+                <li {{ (Request::is('admin/settings*') ? ' class=active' : '') }} >
                     <a href="{{route('settings')}}">
-                       <i class="fa fa-cogs"></i> Settings  
+                        <i class="fa fa-cogs"></i> Settings  
                     </a>
                 </li>
-                
+
                 @else
-                 <li class="{{ (Request::is('contact') ? 'active' : '') }}">
-                    <a href="#"><i class="fa fa-phone"></i> Contact</a>
+                <li class="{{ (Request::is('user/contact') ? 'active' : '') }}">
+                    <a href="{{url('user/contact')}}"><i class="fa fa-phone"></i> Contact</a>
+                </li>
+                <li class="{{ (Request::is('user/impressum') ? 'active' : '') }}">
+                    <a href="{{url('user/impressum')}}"><i class="fa fa-info"></i> Impressum</a>
                 </li>
                 @endif
                 @endif

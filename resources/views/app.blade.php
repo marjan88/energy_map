@@ -48,6 +48,7 @@
         <![endif]-->
 
         <!--<link rel="shortcut icon" href="{{{ asset('assets/site/ico/favicon.ico') }}}">-->
+        @include('partials.analyticstracking')
     </head>
     <body>
         @include('partials.nav')

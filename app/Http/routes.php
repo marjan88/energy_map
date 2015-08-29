@@ -11,31 +11,33 @@
   |
  */
 
-Route::get('/', ['middleware'=>'user', 'uses' => 'Auth\AuthController@getLogin']);
+Route::get('/', ['middleware' => 'user', 'uses' => 'Auth\AuthController@getLogin']);
 
-Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isAdmin']], function() {
-    Route::get('home', 'Users\UserController@index');
-    Route::get('home/data', 'Users\UserController@getData');
-    Route::get('profile', 'Users\UserController@getEdit');
-    Route::post('profile/{id}/edit', 'Users\UserController@postEdit');
-    
+Route::group(['prefix' => 'user', 'middleware' => ['auth', 'isAdmin'], 'namespace' => 'Users'], function() {
+    Route::get('home', 'UserController@index');
+    Route::get('home/data', 'UserController@getData');
+    Route::get('profile', 'UserController@getEdit');
+    Route::post('profile/{id}/edit', 'UserController@postEdit');
+
 
     #plant
 //    Route::post('search/autocomplete', 'Users\UserController@autocomplete');
-    Route::get('search/anlagenregister', 'Users\AnlagenregisterController@autocomplete');
-    Route::post('search/anlagenregister', 'Users\AnlagenregisterController@getResults');
-    Route::get('anlagenregister/{id}/data', 'Users\AnlagenregisterController@showData');
-    Route::post('anlagenregister/create', 'Users\AnlagenregisterController@postCreate');
-    Route::get('anlagenregister/confirm', 'Users\AnlagenregisterController@getCreate');
-    Route::post('anlagenregister/store', 'Users\AnlagenregisterController@store');
-    Route::get('anlagenregister', 'Users\AnlagenregisterController@index');
-    Route::get('anlagenregister/{id}/show', 'Users\UserController@show');
-    Route::get('delete/{id}', 'Users\UserController@deletePlant');
-    Route::get('pdf/{id}', 'Users\DocumentController@createPdf');
+    Route::get('search/anlagenregister', 'AnlagenregisterController@autocomplete');
+    Route::post('search/anlagenregister', 'AnlagenregisterController@getResults');
+    Route::get('anlagenregister/{id}/data', 'AnlagenregisterController@showData');
+    Route::post('anlagenregister/create', 'AnlagenregisterController@postCreate');
+    Route::get('anlagenregister/confirm', 'AnlagenregisterController@getCreate');
+    Route::post('anlagenregister/store', 'AnlagenregisterController@store');
+    Route::get('anlagenregister', 'AnlagenregisterController@index');
+    Route::get('anlagenregister/{id}/show', 'UserController@show');
+    Route::get('delete/{id}', 'UserController@deletePlant');
+    Route::get('pdf/{id}', 'DocumentController@createPdf');
 
 
-    Route::get('about', 'PagesController@about');
-    Route::get('contact', 'PagesController@contact');
+
+    Route::get('contact', 'ContactController@index');
+    Route::get('impressum', 'ContactController@impressum');
+    Route::post('contact', ['as' => 'contact.send', 'uses' => 'ContactController@send']);
 
     Route::pattern('id', '[0-9]+');
 });

@@ -21,7 +21,7 @@
     <div class="col-sm-9 col-md-10 main">
         <div class="page-header">
             <h3>
-                Anlagenregister
+                <i class="fa fa-bolt"></i> Anlagenregister
                 <div class="pull-right">
                     <div class="pull-right">
                         @if(count($plants)>0) <small>You have <strong>{{count($plants)}}</strong> out of 25 plants</small> @endif
@@ -38,11 +38,11 @@
             <form class="form-inline clearfix" id="search" autocomplete="off">
                 <div class="form-group">
                     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-                    <input type="search" class="form-control" id="suche" name="term" placeholder="Postleitzahl..">
+                    <input type="search" class="form-control" id="suche" name="term" placeholder="Suche Postleitzahl..">
 
                     <input type="hidden" name="id" id="id" />
                 </div>
-                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+               <?php /* <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button> */ ?>
             </form>
         </div>
     </div>

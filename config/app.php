@@ -145,6 +145,7 @@ return [
 		'Laracasts\Generators\GeneratorsServiceProvider',
 		'Laracasts\Flash\FlashServiceProvider',
 		'Barryvdh\Debugbar\ServiceProvider',
+                'Spatie\LaravelAnalytics\LaravelAnalyticsServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -214,6 +215,7 @@ return [
 		'Flash' => 'laracasts/Flash/Flash',
 		'Debugbar' => 'Barryvdh\Debugbar\Facade',
                 'PDF' => 'Barryvdh\DomPDF\Facade',
+                'LaravelAnalytics' => 'Spatie\LaravelAnalytics\LaravelAnalyticsFacade',
 
 	],
 

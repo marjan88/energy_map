@@ -15,7 +15,7 @@
                 Profil bearbeiten
                 <div class="pull-right">
                     <div class="pull-right">
-                        <a class="btn btn-sm btn-primary" href="{{ url('admin/users')}}"><span class="glyphicon glyphicon-backward"></span> Back</a>
+                        <a class="btn btn-sm btn-default" href="{{ url('admin/users')}}"><span class="glyphicon glyphicon-backward"></span> Back</a>
                     </div>
                 </div>
             </h3>

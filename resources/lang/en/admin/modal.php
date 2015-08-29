@@ -17,7 +17,8 @@ return [
     'delete' => 'Delete',
     'mail' => array(
         'success' => 'Email was sucessfully sent to the client',
-        'error' => 'There was an error sending this email, please try again.'
+        'error' => 'There was an error sending this email, please try again.',
+        'contact' => 'Your email was successfuly sent.'
     )
 
 ];
