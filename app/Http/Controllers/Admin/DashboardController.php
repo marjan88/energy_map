@@ -15,7 +15,7 @@ class DashboardController extends AdminController {
 
 	public function index()
 	{
-        $title = "Dashboard";
+        $title = "Welcome, " . \Auth::user()->name;
         $users = User::count();
         $lastUsers = User::orderBy('last_login', 'desc')->take(10)->get();
         

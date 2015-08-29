@@ -1,9 +1,5 @@
 @extends('admin.layouts.modal') {{-- Content --}} @section('content')
-<!-- Tabs -->
-<ul class="nav nav-tabs">
-	<li class="active"><a href="#tab-general" data-toggle="tab"> {{
-			Lang::get("admin/modal.general") }}</a></li>
-</ul>
+
 <!-- ./ tabs -->
 {{-- Edit Blog Form --}}
 <form class="form-horizontal" enctype="multipart/form-data"

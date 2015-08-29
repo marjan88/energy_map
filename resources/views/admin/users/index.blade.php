@@ -13,7 +13,7 @@
             {{{ Lang::get("admin/users.users") }}}
             <div class="pull-right">
             <div class="pull-right">
-                <a class="btn btn-sm btn-default" href="{{route('user.create')}}">
+                <a class="btn btn-sm btn-success" href="{{route('user.create')}}">
                     <span class="glyphicon glyphicon-plus-sign"></span>
                     Neue Kunden
                 </a>

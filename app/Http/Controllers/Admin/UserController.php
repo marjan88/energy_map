@@ -242,9 +242,9 @@ class UserController extends AdminController {
         return Datatables::of($users)
                         ->add_column('plants', '{{App\Plant::where("user_id", $id)->count()}}')
                         ->edit_column('confirmed', '@if ($confirmed=="1") <span class="glyphicon glyphicon-ok"></span> @else <span class=\'glyphicon glyphicon-remove\'></span> @endif')
-                        ->add_column('actions', '@if($id == "1")<a href="{{{ URL::to(\'admin/users/\' . $id . \'/edit\' ) }}}" class="btn btn-success btn-sm" >{{ Lang::get("admin/modal.show") }}</a>
+                        ->add_column('actions', '@if($id == "1")<a href="{{{ URL::to(\'admin/users/\' . $id . \'/edit\' ) }}}" class="btn btn-primary btn-sm" >{{ Lang::get("admin/modal.show") }}</a>
                             @else
-                            <a href="{{{ URL::to(\'admin/users/\' . $id . \'/edit\' ) }}}" class="btn btn-success btn-sm" >{{ Lang::get("admin/modal.show") }}</a>
+                            <a href="{{{ URL::to(\'admin/users/\' . $id . \'/edit\' ) }}}" class="btn btn-primary btn-sm" >{{ Lang::get("admin/modal.edit") }}</a>
                             <a href="{{{ URL::to(\'admin/users/\' . $id . \'/delete\' ) }}}" onclick="return confirm(\'Are you sure you want to delete this user?\');" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span> {{ Lang::get("admin/modal.delete") }}</a>
                             @endif
                 ')

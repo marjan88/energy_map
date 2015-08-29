@@ -3,10 +3,10 @@
 @include('notifications')
 <div class="page-header">
     <h3>
-        <i class="fa fa-user"></i> {{ Lang::get('admin/users.create') }}
+        <i class="fa fa-user-plus"></i> {{ Lang::get('admin/users.create') }}
         <div class="pull-right">
             <div class="pull-right">
-                <a class="btn btn-sm btn-primary" href="{{ url('admin/users')}}"><span class="glyphicon glyphicon-backward"></span> Back</a>
+                <a class="btn btn-sm btn-default" href="{{ url('admin/users')}}"><span class="glyphicon glyphicon-backward"></span> Back</a>
             </div>
         </div>
     </h3>

@@ -10,7 +10,7 @@
 <div class="page-header">
     <h3>
         <i class="fa fa-bolt"></i> Anlagenregister
-        
+
     </h3>
 </div>
 <div class="row">
@@ -21,13 +21,15 @@
 
     <div class="col-lg-4 col-centered">
         <form class="form-inline clearfix" id="search" autocomplete="off">
-            <div class="form-group">
-                <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-                <input type="search" class="form-control" id="suche" name="term" placeholder="Postleitzahl..">
 
-                <input type="hidden" name="id" id="id" />
-            </div>
-            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+            <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+
+            <input type="search" class="form-control" id="suche" name="term" placeholder="Suche postleitzahl.." aria-describedby="basic-addon1">
+
+
+            <input type="hidden" name="id" id="id" />
+
+<!--<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>-->
         </form>
     </div>
 </div>

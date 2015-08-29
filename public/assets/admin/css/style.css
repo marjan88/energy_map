@@ -40,18 +40,60 @@ a {
     color: #ffffff;
 }
 
+/* SUCHE */
+
+#suche {
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    font-size: 20px;
+    font-family: "Open Sans";
+
+}
+
+#suche:focus {
+    box-shadow: none !important;
+    border: 1px solid #cccccc;
+}
+
+.ui-menu .ui-menu-item {
+    border-bottom: 1px solid #ccc;    
+    padding: 7px 1em 3px 0.4em;   
+    text-align: center;
+}
+
+.ui-state-focus-hover, .ui-state-focus {
+    background-color: #263238 !important;
+    color: #ffffff !important;
+    border: none !important;
+}
+
+.ui-menu .ui-state-active {
+    margin: 0px !important;
+}
+
 /* BUTTONS */
 
 .btn-primary {
-   background-color: #46be8a;
+    background-color: #46be8a;
     border-color: #46be8a;
     color: #ffffff;
 }
 
-.panel-primary {
-   
+.btn-success {
+    background-color: #259dab;
     border-color: #259dab;
-    
+    color: #ffffff;
+}
+
+.btn-success:hover, .btn-success:focus {
+    background-color: #263238;
+    border-color: #263238;
+    color: #ffffff;
+}
+
+.panel-primary {
+    border-color: #259dab;
 }
 
 .panel-primary > .panel-heading {
@@ -62,12 +104,12 @@ a {
 
 
 .btn-primary:hover {
-   background-color: #82b440;
+    background-color: #82b440;
     border-color: #82b440;
     color: #ffffff;
 }
 .btn-primary:focus {
-   background-color: #82b440;
+    background-color: #82b440;
     border-color: #82b440;
     color: #ffffff;
 }
@@ -75,7 +117,7 @@ a {
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
     background-color: #46be8a; 
     color: #ffffff;
-  
+
 }
 
 
