@@ -39,8 +39,8 @@
                     </a>
                 </li>
 
-                <li {{ (Request::is('admin/contact*') ? ' class=active' : '') }} >
-                    <a href="{{route('contact')}}"><i class="fa fa-phone"></i> {{ \Lang::get('admin/contact.contact-form')}}</a>
+                <li {{ (Request::is('admin/impressum*') ? ' class=active' : '') }} >
+                    <a href="{{route('impressum')}}"><i class="fa fa-info"></i> Impressum</a>
                 </li>
 
                 <li {{ (Request::is('admin/settings*') ? ' class=active' : '') }} >

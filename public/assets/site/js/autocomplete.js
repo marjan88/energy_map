@@ -19,6 +19,7 @@ $(document).ready(function () {
             select: function (event, ui) {
 
                 $('#id').val(ui.item.value);
+                
             }
         });
 
@@ -28,7 +29,7 @@ $(document).ready(function () {
             select: function (event, ui) {
 
                 $('#id').val(ui.item.value);
-
+                $('#search').submit();
             }
         });
         var loading = $("#preloader-1");
@@ -62,10 +63,10 @@ $(document).ready(function () {
                         var modal = ''
                         $.each(data, function (index, value) {
 
-                            html += '<tr><td>' + value.year + '</td><td>' + value.value + '</td><td>' + value.ort + '</td>\n\
-                                    <td>' + value.strasse + '</td><td>' + value.key + '</td><td>' + value.type + '</td>\n\
+                            html += '<tr id="' + value.id + '"><td>' + value.year + '</td><td>' + value.value + '</td><td>' + value.ort + '</td>\n\
+                                    <td>' + value.strasse + '</td><td>' + value.type + '</td>\n\
                                     <td>' + value.leistung + '</td><td>' + value.energietraeger + '</td>\n\
-                                    <td>' + value.netzbetreiber + '</td><td><input type="checkbox" name="id[]" value="' + value.id + '"></td>\n\
+                                    <td>' + value.netzbetreiber + '</td><td><input class="checkbox" id="' + value.id + '" type="checkbox" name="id[]" value="' + value.id + '"></td>\n\
                                     <td><button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal' + value.id + '">View</button></td></tr>';
 
                             modal += '<div class="modal fade" id="modal' + value.id + '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\n\
@@ -120,7 +121,30 @@ $(document).ready(function () {
                         $('.data').html(html);
                         $('.modalDiv').html(modal);
                         table.show();
-                        $('#table').dataTable();
+                        var selected = [];
+                         $('#table').dataTable({
+                            "rowCallback": function (row, data) {
+                                if ($.inArray(data.DT_RowId, selected) !== -1) {
+                                    $(row).addClass('selected');
+                                }
+                            }
+                        });
+                        $('#table tbody').on('click', 'tr', function () {
+                            var id = this.id;
+                            var index = $.inArray(id, selected);
+
+                            if (index === -1) {
+                                selected.push(id);
+
+                            } else {
+                                selected.splice(index, 1);
+                            }
+                            $(this).toggleClass('selected');
+                            $('#' + id + ' input').attr('checked', true);
+
+                            $('#arrayData').val(selected)
+
+                        });
                         $('#myModal').modal('toggle');
                         $('#id').val("");
                         $('#suche').val("");

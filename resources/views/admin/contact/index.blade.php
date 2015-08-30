@@ -3,7 +3,7 @@
 @include('notifications')
 <div class="page-header">
     <h3>
-        <i class="fa fa-phone"></i> {{ \Lang::get('admin/contact.contact-form')}}
+        <i class="fa fa-info"></i> Impressum form
 
     </h3>
 </div>

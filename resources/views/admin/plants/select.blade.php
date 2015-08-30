@@ -11,7 +11,7 @@
         Select User
         <div class="pull-right">
             <div class="pull-right"> 
-                <a href="{{url('admin/anlagenregister')}}" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-backward"></span> Back</a>
+                <a href="{{url('admin/anlagenregister')}}" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-backward"></span> Back</a>
             </div>
         </div>
     </h3>

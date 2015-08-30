@@ -31,7 +31,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin
     Route::get('users/data', 'UserController@data');
 
     #Contact
-    Route::get('contact', ['as' => 'contact', 'uses' => 'ContactController@index']);
+    Route::get('impressum', ['as' => 'impressum', 'uses' => 'ContactController@index']);
     Route::post('contact/create', ['as' => 'contact.create', 'uses' => 'ContactController@store']);
 
     #Settings

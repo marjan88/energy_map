@@ -38,7 +38,7 @@ class AnlagenregisterController extends Controller {
 
         foreach ($plants as $plant) {
             $results[] = [ 'id' => $plant->id, 'year' => $plant->Inbetriebnahme, 'value' => $plant->PLZ, 'ort' => $plant->Ort, 'strasse' => $plant->Strasse
-                , 'key' => $plant->Anlagenschluessel, 'type' => $plant->Anlagentyp];
+                ,  'type' => $plant->Anlagentyp];
         }
         if (!empty($results)) {
             return Response::json($results, 200);
@@ -121,8 +121,9 @@ class AnlagenregisterController extends Controller {
      * @return Response
      */
     public function postCreate() {
-        $ids = Input::get('id');
-
+        $ids = Input::get('arrayId');
+        $ids = explode(',', $ids);
+       
         if (count($ids) > 25) {
             return redirect('user/anlagenregister')->with('error', 'To many plants for this client. Only 25 per client is aloud.');
         }
